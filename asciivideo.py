@@ -15,10 +15,10 @@ def image_to_ascii(img):
     new_height=get_terminal_size().lines
     #resize 
     img_array=cv2.resize(img,(new_width,new_height))
-    chars=["@","#","S","%","?","*","+",";",":",",","."]
-    interv=list(cut(img_array.ravel(),len(chars),labels=chars[::-1]))
+    chars=["@","#","S","%","?","*","+",";",":",",","."] #the characters that we are going to use
+    interv=list(cut(img_array.ravel(),len(chars),labels=chars[::-1])) #separate evenly the values into "buckets", values in the same bucket will have the same ascii character
     pixel_count=img_array.shape[0]*img_array.shape[1]
-    ascii_image="\n".join("".join(interv[i:(i+new_width)]) for i in range(0,pixel_count,new_width))
+    ascii_image="\n".join("".join(interv[i:(i+new_width)]) for i in range(0,pixel_count,new_width)) #split the string into lines
     return ascii_image
 
 #let's start recording
